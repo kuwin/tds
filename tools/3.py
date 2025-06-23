@@ -42,7 +42,7 @@ class TraoDoiSub_Api (object):
 			return False
 	def run(self, user):
 		try:
-			run = requests.get(f'https://traodoisub.com/api/?fields=tiktok_run&id={{idTiktok}}&access_token={self.token}').json()
+			run = requests.get(f'https://traodoisub.com/api/?fields=tiktok_run&id={user}&access_token={self.token}').json()
 			try:
 				return run['data']
 			except:
@@ -52,7 +52,7 @@ class TraoDoiSub_Api (object):
 	#tiktok_like, tiktok_follow
 	def get_job(self, type):
 		try:
-			get = requests.get(f'https://traodoisub.com/api/?fields={{type}}&access_token={self.token}')
+			get = requests.get(f'https://traodoisub.com/api/?fields={type}&access_token={self.token}')
 			return get
 		except:
 			return False
@@ -60,7 +60,7 @@ class TraoDoiSub_Api (object):
 	def cache(self, id, type):
 #TIKTOK_LIKE_CACHE, TIKTOK_FOLLOW_CACHE
 		try:
-			cache = requests.get(f'https://traodoisub.com/api/coin/?type={{type}}&id={{id_job}}&access_token={self.token}').json()
+			cache = requests.get(f'https://traodoisub.com/api/coin/?type={type}&id={id}&access_token={self.token}').json()
 			try:
 				cache['cache']
 				return True
@@ -71,7 +71,7 @@ class TraoDoiSub_Api (object):
 
 	def nhan_xu(self, id, type):
 		try:
-			nhan = requests.get(f'https://traodoisub.com/api/coin/?type={{type}}&id={{id_job}}&access_token={self.token}')
+			nhan = requests.get(f'https://traodoisub.com/api/coin/?type={type}&id={id}&access_token={self.token}')
 			try:
 				xu = nhan.json()['data']['xu']
 				msg = nhan.json()['data']['msg']
