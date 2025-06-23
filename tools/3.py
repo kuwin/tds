@@ -42,7 +42,7 @@ class TraoDoiSub_Api (object):
 			return False
 	def run(self, user):
 		try:
-			run = requests.get(f'https://traodoisub.com/api/?fields=tiktok_run&id={user}&access_token={self.token}').json()
+			run = requests.get(f'https://traodoisub.com/api/?fields=tiktok_run&id={{idTiktok}}&access_token={self.token}').json()
 			try:
 				return run['data']
 			except:
